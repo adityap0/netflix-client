@@ -14,7 +14,7 @@ export default function Register() {
   const handleFinish = async (e) => {
     e.preventDefault();
     await register({ email, username, password }, dispatch);
-    history.push("/");
+    history.push("/login");
   };
   return (
     <div className="register">
@@ -25,9 +25,6 @@ export default function Register() {
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/2560px-Netflix_2015_logo.svg.png"
             alt=""
           />
-          <Link to="/login">
-            <button className="loginButton">Log In</button>
-          </Link>
         </div>
       </div>
       <div className="container">
@@ -36,19 +33,23 @@ export default function Register() {
         <p>
           Ready to watch? Enter your email to create or restart your membership.
         </p>
+
         <form className="input">
           <input
-            type="email"
+            type="text"
+            name="email"
             placeholder="email address"
             onChange={(e) => setEmail(e.target.value)}
           />
           <input
-            type="username"
+            type="text"
             placeholder="username"
+            name="username"
             onChange={(e) => setUsername(e.target.value)}
           />
           <input
-            type="password"
+            type="text"
+            name="password"
             placeholder="password"
             onChange={(e) => setPassword(e.target.value)}
           />
@@ -56,6 +57,10 @@ export default function Register() {
             Start
           </button>
         </form>
+        <span>OR</span>
+        <Link to="/login">
+          <button className="loginButton">Log In</button>
+        </Link>
       </div>
     </div>
   );

@@ -20,15 +20,6 @@
       .logo {
         height: 40px;
       }
-
-      .loginButton {
-        background-color: red;
-        border: none;
-        color: white;
-        border-radius: 5px;
-        padding: 5px 15px;
-        font-size: 16px;
-      }
     }
   }
 
@@ -83,5 +74,20 @@
         cursor: pointer;
       }
     }
+  }
+  span {
+    margin: 35px;
+    font-size: 32px;
+    font-weight: bold;
+    text-decoration: initial;
+  }
+  .loginButton {
+    background-color: red;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    padding: 5px 15px;
+    font-size: 16px;
+    cursor: pointer;
   }
 }
