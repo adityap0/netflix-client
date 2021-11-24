@@ -28,7 +28,7 @@ export default function Login() {
       </div>
       <div className="container">
         <form>
-          <h1>Sign In</h1>
+          <h1>Log In</h1>
           <input
             type="email"
             placeholder="Email or phone number"
@@ -40,7 +40,7 @@ export default function Login() {
             onChange={(e) => setPassword(e.target.value)}
           />
           <button className="loginButton" onClick={handleLogin}>
-            Sign In
+            Log In
           </button>
           <span>
             New to Netflix? <b>Sign up now.</b>

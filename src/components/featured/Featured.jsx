@@ -1,6 +1,7 @@
 import { PlayArrow } from "@material-ui/icons";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 import "./featured.scss";
 
 export default function Featured({ type, setGenre }) {
@@ -9,12 +10,17 @@ export default function Featured({ type, setGenre }) {
   useEffect(() => {
     const getRandomContent = async () => {
       try {
-        const res = await axios.get(`/movies/random?type=${type}`, {
-          headers: {
-            token:
-              "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
-          },
-        });
+        const res = await axios.get(
+          process.env.REACT_APP_ROOT_URL + `movies/random?type=${type}`,
+          {
+            headers: {
+              token:
+                "Bearer " +
+                JSON.parse(localStorage.getItem("user")).accessToken,
+            },
+          }
+        );
+        console.log(res.data[0], "data-response");
         setContent(res.data[0]);
       } catch (err) {
         console.log(err);
@@ -50,10 +56,12 @@ export default function Featured({ type, setGenre }) {
         <h1>{content.title}</h1>
         <span className="desc">{content.desc}</span>
         <div className="buttons">
-          <button className="play">
-            <PlayArrow />
-            <span>Play</span>
-          </button>
+          <NavLink to={{ pathname: "/watch", movie: content }}>
+            <button className="play">
+              <PlayArrow />
+              <span>Play</span>
+            </button>
+          </NavLink>
         </div>
       </div>
     </div>

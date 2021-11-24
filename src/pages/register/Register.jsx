@@ -48,7 +48,7 @@ export default function Register() {
             onChange={(e) => setUsername(e.target.value)}
           />
           <input
-            type="text"
+            type="password"
             name="password"
             placeholder="password"
             onChange={(e) => setPassword(e.target.value)}

@@ -11,8 +11,11 @@ import {
 } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "./authContext/AuthContext";
+const dotenv = require("dotenv");
+dotenv.config();
 
 const App = () => {
+  console.log(process.env.REACT_APP_ROOT_URL, "root");
   const { user } = useContext(AuthContext);
   return (
     <Router>

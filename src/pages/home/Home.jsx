@@ -1,5 +1,6 @@
 import Navbar from "../../components/navbar/Navbar";
 import Featured from "../../components/featured/Featured";
+import Footer from "../../components/footer/Footer";
 import "./home.scss";
 import List from "../../components/list/List";
 import { useEffect, useState } from "react";
@@ -13,13 +14,15 @@ const Home = ({ type }) => {
     const getRandomLists = async () => {
       try {
         const res = await axios.get(
-          `lists${type ? "?type=" + type : ""}${
-            genre ? "&genre=" + genre : ""
-          }`,
+          process.env.REACT_APP_ROOT_URL +
+            `lists${type ? "?type=" + type : ""}${
+              genre ? "&genre=" + genre : ""
+            }`,
           {
             headers: {
               token:
-              "Bearer "+JSON.parse(localStorage.getItem("user")).accessToken,
+                "Bearer " +
+                JSON.parse(localStorage.getItem("user")).accessToken,
             },
           }
         );
@@ -36,8 +39,9 @@ const Home = ({ type }) => {
       <Navbar />
       <Featured type={type} setGenre={setGenre} />
       {lists.map((list) => (
-        <List list={list} />
+        <List list={list} key={list} />
       ))}
+      <Footer />
     </div>
   );
 };
